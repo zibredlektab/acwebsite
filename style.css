@@ -11,6 +11,8 @@ body {
 	
 	font-family: 'Lato';
 	font-weight: 100;
+	
+	filter: blur(50px);
 }
 
 #header {
@@ -36,8 +38,29 @@ body {
 #title {
 	font-size: 3em;
 	font-weight: 100;
-	margin: 0;
+	padding: 0 5px;
 	font-style: italic;
+	display: inline;
+	background-color: #448f9a;
+	filter: blur(0px);
+}
+
+#line {
+	height: 1px;
+	background-color: white;
+	display: inline;
+	width: 100%;
+	position: absolute;
+	left: 0; top: 93%;
+}
+
+#arrow {
+	opacity: 0;
+	font-size: 3em;
+	position: absolute;
+	margin: 0 auto;
+	left: 0; right:0;
+	padding-top: 30px;
 }
 
 #content {
