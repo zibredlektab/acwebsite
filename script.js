@@ -3,37 +3,43 @@ var arrowisvisible = false;
 var havescrolled = false;
 var scroller = new scrollPercent;
 
-$(document).load(function(){
-	
-	blur("body", 50);
-	
+$(window).load(function(){
+	setTimeout(function() {
+		$('html, body').scrollTop(0); 
+	}, 10);
 });
 
 $(document).ready(function(){
-
+	
 	$("body").animate({foo:50},{
 		duration: 2000,
 		step: function(value) {
 			blur("body", 50-value);
 		}, complete: function() {
-			if (!havescrolled) {
-				$("#arrow").delay(3000).animate({"opacity":1},{
-					duration: 1000,
-					complete: function() {
-						arrowisvisible = true;
+			console.log("fade-in complete");			
+			if (!havescrolled) { // if we haven't already started scrolling
+				console.log("check 1: have not scrolled yet");
+				setTimeout(function() {
+					console.log("waited two seconds");
+					// wait two seconds before showing the arrow
+					if (!havescrolled) { // double-check that we haven't scrolled in those two seconds
+						console.log("check 2: still haven't scrolled, fading in arrow");
+						$("#arrow").animate({"opacity":1},{ // show the arrow
+							duration: 1000,
+							complete: function() {
+								console.log("arrow is fully faded-in");
+								arrowisvisible = true;
+							}
+						});
+					} else {
+						console.log("check 2 failed, scrolled during the two second wait");
 					}
-				});
+				}, 2000);
+				
+			} else {
+				console.log("check 1 failed, have already scrolled");
 			}
 		}
-	});
-
-	$("#play").click(function() {
-		$("#name").animate({foo:100}, {
-			duration: 4000,
-			step: function(value) {
-				blur("#name", value);
-			}
-		});
 	});
 	
 	$("a").click(function() {
@@ -60,11 +66,11 @@ $(document).on('input change', '#blur', function() {
 
 function blur(thingtoblur, radius) {
 
-	if (radius > 50) {
+	if (radius > 50) { // don't blur anything more than 50 pixels
 		radius = 50;
 	}
 	
-	if (radius < 0) {
+	if (radius < 0) { // blur radii of less than 0 make no sense, lets not waste time
 		radius = 0;
 	}
 	
@@ -78,8 +84,6 @@ function blur(thingtoblur, radius) {
 
 window.onscroll = function() {
 
-	havescrolled = true;
-
 	if (arrowisvisible) {
 		$("#arrow").fadeOut(200);
 		arrowisvisible = false;
@@ -89,6 +93,18 @@ window.onscroll = function() {
 
 	var scrollamount = scroller.percent();
 	
+	// the page automatically scrolls to the top when it is loaded, but that shouldn't
+		// count as "scrolling" for the purposes of showing the arrow
+	if (scrollamount == 0) {
+		havescrolled = false;
+	} else {
+		havescrolled = true;
+	}
+	
+	
+	
+	console.log("scrolling, position is " + scrollamount + "%");
+	
 	//$("#name").css("transform", "translate(0px," + scrollamount*1.7 + "px)");
 	//$("#title").css("transform", "translate(0px," + scrollamount*-.2 + "px)");
 	//$("#content").css("transform", "translate(0px," + scrollamount*-5 + "px)");	
@@ -96,7 +112,7 @@ window.onscroll = function() {
 	
 	//$("#title").css("top", scrollamount*-20 + "%");
 	
-	$("#content").css("top", 115+scrollamount*-.5 + "%");
+	//$("#content").css("top", 115+scrollamount*-.5 + "%");
 	
 	blur("#name", scrollamount*.35);
 	blur("#title", scrollamount*.1);
