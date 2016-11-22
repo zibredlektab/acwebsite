@@ -7,7 +7,7 @@ body {
 	background: #448f9a;
 	color: white;
 	
-	height: 120%;
+	//height: 120%;
 	
 	font-family: 'Lato';
 	font-weight: 100;
@@ -15,18 +15,22 @@ body {
 	filter: blur(50px);
 }
 
+#header-container {
+	position: fixed;
+}
+
 #header {
 	position: fixed;
-	margin: 0 auto;
-	left: 0; right: 0;
-	top: 30%;
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
 	letter-spacing: -.05em;
+	width: 100%;
 }
 
 #name {
 	font-size: 7em;
 	width: 100%;
-	padding: 10% 0 0 0;
+	padding: 0;
 	margin: 0;
 	font-weight: 700;
 	letter-spacing: -.05em;
@@ -51,7 +55,7 @@ body {
 	display: inline;
 	width: 100%;
 	position: absolute;
-	left: 0; top: 93%;
+	left: 0; top: 89%;
 }
 
 #arrow {
@@ -64,7 +68,7 @@ body {
 }
 
 #content {
-	margin: 0 auto;
+	margin: 0 auto 25% auto;
 	left: 0; right: 0;
 	top: 115%;
 	position: absolute;
