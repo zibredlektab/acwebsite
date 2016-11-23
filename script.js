@@ -17,31 +17,13 @@ $(document).ready(function(){
 			blur("body", 50-value);
 		}, complete: function() {
 			console.log("fade-in complete");			
-			if (!havescrolled) { // if we haven't already started scrolling
-				console.log("check 1: have not scrolled yet");
-				setTimeout(function() {
-					console.log("waited two seconds");
-					// wait two seconds before showing the arrow
-					if (!havescrolled) { // double-check that we haven't scrolled in those two seconds
-						console.log("check 2: still haven't scrolled, fading in arrow");
-						$("#arrow").animate({"opacity":1},{ // show the arrow
-							duration: 1000,
-							complete: function() {
-								console.log("arrow is fully faded-in");
-								arrowisvisible = true;
-							}
-						});
-					} else {
-						console.log("check 2 failed, scrolled during the two second wait");
-					}
-				}, 2000);
-				
-			} else {
-				console.log("check 1 failed, have already scrolled");
-			}
+			showArrowIfHaventScrolled();
 		}
 	});
 	
+	
+	
+	// links should blur out the page before transitioning
 	$("a").click(function() {
 		var link = $(this)
 		$("body").animate({foo:50},{
@@ -54,31 +36,6 @@ $(document).ready(function(){
 		});
 	});
 });
-
-$(document).on('input change', '#blur', function() {
-    bluramount = $('#blur').html( $(this) ).prop("value");
-
-	blur("#name", bluramount);
-    
-});
-
-
-
-function blur(thingtoblur, radius) {
-
-	if (radius > 50) { // don't blur anything more than 50 pixels
-		radius = 50;
-	}
-	
-	if (radius < 0) { // blur radii of less than 0 make no sense, lets not waste time
-		radius = 0;
-	}
-	
-	$(thingtoblur).foggy({
-		blurRadius: radius,
-		opacity: 1
-	});
-}
 
 
 
@@ -94,7 +51,7 @@ window.onscroll = function() {
 	var scrollamount = scroller.percent();
 	
 	// the page automatically scrolls to the top when it is loaded, but that shouldn't
-		// count as "scrolling" for the purposes of showing the arrow
+	// count as "scrolling" for the purposes of showing the hint arrow
 	if (scrollamount == 0) {
 		havescrolled = false;
 	} else {
@@ -112,10 +69,56 @@ window.onscroll = function() {
 	
 	//$("#title").css("top", scrollamount*-20 + "%");
 	
-	//$("#content").css("top", 115+scrollamount*-.5 + "%");
+	//$("#content").css("top", 115+scrollamount*-.65 + "%");
 	
 	blur("#name", scrollamount*.35);
 	blur("#title", scrollamount*.1);
 	blur("#line", scrollamount*.1);
 	//blur("#content", 50-scrollamount);
+}
+
+
+function showArrowIfHaventScrolled() {
+	if (!havescrolled) { // if we haven't already started scrolling
+		console.log("check 1: have not scrolled yet");
+		setTimeout(function() {
+			console.log("waited two seconds");
+			// wait two seconds before showing the arrow
+			if (!havescrolled) { // double-check that we haven't scrolled in those two seconds
+				console.log("check 2: still haven't scrolled, fading in arrow");
+				$("#arrow").animate({"opacity":1},{ // show the arrow
+					duration: 1000,
+					complete: function() {
+						console.log("arrow is fully faded-in");
+						arrowisvisible = true;
+					}
+				});
+			} else {
+				console.log("check 2 failed, scrolled during the two second wait");
+			}
+		}, 2000);
+		
+	} else {
+		console.log("check 1 failed, have already scrolled");
+	}
+
+}
+
+
+
+
+function blur(thingtoblur, radius) {
+
+	if (radius > 50) { // don't blur anything more than 50 pixels
+		radius = 50;
+	}
+	
+	if (radius < 0) { // blur radii of less than 0 make no sense, lets not waste time
+		radius = 0;
+	}
+	
+	$(thingtoblur).foggy({
+		blurRadius: radius,
+		opacity: 1
+	});
 }
