@@ -2,30 +2,36 @@
     display: none; 
 }
 
+.element {
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+}
+
 body {
 	text-align: center;
 	background: #448f9a;
 	color: white;
 	
-	//height: 120%;
+	height: 100%;
 	
 	font-family: 'Lato';
 	font-weight: 100;
 	
-	filter: blur(50px);
 }
 
-#header-container {
-	position: fixed;
+#whole-dang-thing {
+	
 }
 
 #header {
-	position: fixed;
-	left: 50%; top: 50%;
+	top: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
+	position: fixed;
 	letter-spacing: -.05em;
 	width: 100%;
 }
+
 
 #name {
 	font-size: 7em;
@@ -68,11 +74,23 @@ body {
 }
 
 #content {
-	margin: 0 auto 25% auto;
+	margin: 0 auto;
 	left: 0; right: 0;
 	top: 115%;
+	height: 50%;
 	position: absolute;
 	font-size: 2em;
+}
+
+#bottom-spacer {
+	height: 25%;
+	width: 100%;
+	background: #f00;
+	border: 2px dotted;
+	
+	position: absolute;
+	bottom: 0%;
+	
 }
 
 

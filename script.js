@@ -11,10 +11,14 @@ $(window).load(function(){
 
 $(document).ready(function(){
 	
-	$("body").animate({foo:50},{
+	$("body").animate({fadeincounter:50},{
 		duration: 2000,
 		step: function(value) {
-			blur("body", 50-value);
+			// for some reason firefox doesn't like blurring a block with "fixed" and not-fixed elements
+			// (the fixed element comes unstuck)
+			// so, we blur the header and content separately
+			blur("#header", 50-value);
+			blur("#content", 50-value);
 		}, complete: function() {
 			console.log("fade-in complete");			
 			showArrowIfHaventScrolled();
@@ -26,10 +30,12 @@ $(document).ready(function(){
 	// links should blur out the page before transitioning
 	$("a").click(function() {
 		var link = $(this)
-		$("body").animate({foo:50},{
+		$("body").animate({fadeoutcounter:50},{
 			duration: 600,
 			step: function(value) {
-				blur("body", value);
+				console.log("blur value is " + value);
+				blur("#header", value);
+				blur("#content", value);
 			},complete: function() {
 				window.location.href = link.text()+".html";
 			}
