@@ -12,7 +12,7 @@ $(window).load(function(){
 $(document).ready(function(){
 	
 	$("body").animate({fadeincounter:50},{
-		duration: 1500,
+		duration: 500,
 		step: function(value) {
 			blur(".fade-on-transition", 50-value, value/50);
 		}, complete: function() {
@@ -28,12 +28,16 @@ $(document).ready(function(){
 	$("a").click(function() {
 		var link = $(this)
 		$("body").animate({fadeoutcounter:50},{
-			duration: 600,
+			duration: 300,
 			step: function(value) {
 				console.log("blur value is " + value);
 				blur(".fade-on-transition", value, 1-(0.02*value));
 			},complete: function() {
-				window.location.href = link.attr("id")+".html";
+				var suffix = "html";
+				if (link.attr("id") == "resume") {
+					suffix = "pdf";
+				}
+				window.location.href = link.attr("id") + "." + suffix;
 				$("body").css("fadeoutcounter", 0);
 			}
 		});
