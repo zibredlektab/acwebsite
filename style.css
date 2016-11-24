@@ -1,22 +1,5 @@
-::-webkit-scrollbar { 
-    display: none; 
-}
 
-.element {
-	overflow: -moz-scrollbars-none;
-	-ms-overflow-style: none;
-}
-
-body {
-	background: #448f9a;
-	color: white;
-	
-	height: 100%;
-	
-	font-family: 'Lato';
-	font-weight: 100;
-	
-}
+/* Useful style classes */
 
 body.no-scroll {
 	overflow: hidden;
@@ -36,6 +19,107 @@ body.no-scroll {
 .fixed {
 	position: fixed;
 }
+
+
+/* Hide the scrollbars */
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.element {
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+}
+
+
+/* Global things */
+
+body {
+	background: #448f9a;
+	color: white;
+	
+	height: 100%;
+	
+	font-family: 'Lato';
+	font-weight: 100;
+	
+}
+
+#arrow {
+	opacity: 0;
+	font-size: 3em;
+	position: absolute;
+	margin: 0 auto;
+	left: 0; right:0;
+	padding-top: 30px;
+	text-align: center;
+}
+
+p {
+	margin: 0px;
+	padding: .5em 0 2em 1em;
+	font-size: 1.2em;
+}
+
+h2 {
+	margin: 0px;
+	text-shadow: 0 0 5px rgba(255,255,255,.6);
+	font-size: 2em;
+}
+
+a {
+	text-decoration: none;
+	text-shadow: 1px 1px 2px black;
+	cursor: pointer;
+	
+	transition: none 200ms cubic-bezier(0,0,.2,1);
+	transition-property: all;
+	color: white;
+}
+
+a:hover {
+	padding-right: 6px;
+	font-size: 1.05em;
+	text-shadow: 3px 1px 5px black;
+}
+
+
+/* Menu */
+
+#menu {
+	margin: 0 auto;
+	left: 0; right: 0;
+	top: 115%;
+	height: 50%;
+	position: absolute;
+	font-size: 2em;
+}
+
+ul {
+	padding: 0;
+	margin-top: -2.7em;
+}
+
+li {
+	padding-bottom: .35em;
+	list-style-type: none;
+}
+
+#testimonials {
+	color: transparent;
+	text-shadow: none;
+	transition: none 300ms cubic-bezier(0,0,.2,1);
+	transition-property: color;
+}
+
+#testimonials:hover {
+	padding-right: 0px;
+	font-size: 1em;
+	color: rgba(255,255,255,.3);
+}
+
+/* Main page */
 
 #header {	
 	letter-spacing: -.05em;
@@ -73,34 +157,8 @@ body.no-scroll {
 	left: 0; top: 89%;
 }
 
-#arrow {
-	opacity: 0;
-	font-size: 3em;
-	position: absolute;
-	margin: 0 auto;
-	left: 0; right:0;
-	padding-top: 30px;
-	text-align: center;
-}
 
-#menu {
-	margin: 0 auto;
-	left: 0; right: 0;
-	top: 115%;
-	height: 50%;
-	position: absolute;
-	font-size: 2em;
-}
-
-ul {
-	padding: 0;
-	margin-top: -2.7em;
-}
-
-li {
-	padding-bottom: .35em;
-	list-style-type: none;
-}
+/* About page */
 
 .about-container {
 	width: 70%;
@@ -110,40 +168,14 @@ li {
 	padding-left: 2em;
 }
 
-p {
-	margin: 0px;
-	padding: .5em 0 2em 1em;
-	font-size: 1.2em;
-}
-
-h2 {
-	margin: 0px;
-	text-shadow: 0 0 5px rgba(255,255,255,.6);
-	font-size: 2em;
-}
-
 h2.about-subtitle {
 	font-weight: 300;
 }
 
+/* Contact page */
+
 h2.contact {
 	font-weight: 100;
-}
-
-a {
-	text-decoration: none;
-	text-shadow: 1px 1px 2px black;
-	cursor: pointer;
-	
-	transition: none 200ms cubic-bezier(0,0,.2,1);
-	transition-property: all;
-	color: white;
-}
-
-a:hover {
-	padding-right: 6px;
-	font-size: 1.05em;
-	text-shadow: 3px 1px 5px black;
 }
 
 a.contact:hover {
@@ -152,19 +184,13 @@ a.contact:hover {
 	font-weight: 300;	
 }
 
-#testimonials {
-	color: transparent;
-	text-shadow: none;
-	transition: none 300ms cubic-bezier(0,0,.2,1);
-	transition-property: color;
-}
+/* Testimonials */
 
-#testimonials:hover {
-	padding-right: 0px;
-	font-size: 1em;
-	color: rgba(255,255,255,.3);
+.quote {
+	font-weight: 300;
 }
 
 .attribution {
 	margin: .5em 0 1.5em 0;
+	font-weight: 300;
 }
