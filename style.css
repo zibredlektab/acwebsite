@@ -36,14 +36,24 @@ body.no-scroll {
 /* Global things */
 
 body {
-	background: #448f9a;
-	color: white;
-	
-	height: 100%;
-	
-	font-family: 'Lato';
-	font-weight: 100;
-	
+		background: #448f9a;
+		color: white;
+
+		height: 100%;
+
+		font-family: 'Lato';
+}
+
+@media screen and (max-device-width: 980px) {
+	body {
+		font-weight: 300;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	body {
+		font-weight: 100;
+	}
 }
 
 #arrow {
@@ -59,7 +69,18 @@ body {
 p {
 	margin: 0px;
 	padding: .5em 0 .5em 1em;
-	font-size: 1.2em;
+}
+
+@media screen and (max-device-width: 980px) {
+	p {
+		font-size: 2em;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	p {
+		font-size: 1.2em;
+	}
 }
 
 h2 {
@@ -93,7 +114,18 @@ a:hover {
 	top: 115%;
 	height: 50%;
 	position: absolute;
-	font-size: 2em;
+}
+
+@media screen and (max-device-width: 980px) {
+	#menu {
+		font-size: 4em;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	#menu {
+		font-size: 2em;
+	}
 }
 
 ul {
