@@ -79,8 +79,8 @@ window.onscroll = function() {
 	
 	//$("#content").css("top", 115+scrollamount*-.65 + "%");
 	
-	blur(".name .blur", scrollamount*.35);
-	blur(".blur", scrollamount*.1);
+	blur(".name .blur", scrollamount*.35, (120-scrollamount)/100);
+	blur(".blur", scrollamount*.1, (120-scrollamount)/100);
 	//blur("#content", 50-scrollamount);
 }
 
