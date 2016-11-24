@@ -44,6 +44,8 @@
 
 		font-family: 'Lato';
 		font-weight: 100;
+		
+		-webkit-font-smoothing: subpixel-antialiased;
 	}
 
 	#arrow {
@@ -196,6 +198,7 @@
 
 	.quote {
 		font-weight: 300;
+		
 	}
 
 	.attribution {

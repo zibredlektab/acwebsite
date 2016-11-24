@@ -2,8 +2,21 @@ var bluramount = 0;
 var arrowisvisible = false;
 var havescrolled = false;
 var scroller = new scrollPercent;
+history.navigationMode = 'compatible';
+
+
+// Safari needs this, unfortunately. It forces the page to reload when it is navigated to.
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+    	console.log("reloaded page");
+        window.location.reload();
+    } else {
+    	console.log("don't have to reload the page");
+    }
+});
 
 $(window).load(function(){
+	console.log("window loaded");
 	setTimeout(function() {
 		$('html, body').scrollTop(0); 
 	}, 10);
@@ -11,9 +24,12 @@ $(window).load(function(){
 
 $(document).ready(function(){
 	
+	console.log("document ready");
+
 	$("body").animate({fadeincounter:50},{
 		duration: 500,
 		step: function(value) {
+			console.log("blurring in");
 			blur(".fade-on-transition", 50-value, value/50);
 		}, complete: function() {
 			console.log("fade-in complete");			
