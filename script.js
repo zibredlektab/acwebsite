@@ -12,16 +12,13 @@ $(window).load(function(){
 $(document).ready(function(){
 	
 	$("body").animate({fadeincounter:50},{
-		duration: 2000,
+		duration: 1500,
 		step: function(value) {
-			// for some reason firefox doesn't like blurring a block with "fixed" and not-fixed elements
-			// (the fixed element comes unstuck)
-			// so, we blur the header and content separately
-			blur("#header", 50-value);
-			blur("#content", 50-value);
+			blur(".fade-on-transition", 50-value, value/50);
 		}, complete: function() {
 			console.log("fade-in complete");			
 			showArrowIfHaventScrolled();
+			$("body").css("fadeincounter", 0);
 		}
 	});
 	
@@ -34,10 +31,10 @@ $(document).ready(function(){
 			duration: 600,
 			step: function(value) {
 				console.log("blur value is " + value);
-				blur("#header", value);
-				blur("#content", value);
+				blur(".fade-on-transition", value, 1-(0.02*value));
 			},complete: function() {
-				window.location.href = link.text()+".html";
+				window.location.href = link.attr("id")+".html";
+				$("body").css("fadeoutcounter", 0);
 			}
 		});
 	});
@@ -48,7 +45,7 @@ $(document).ready(function(){
 window.onscroll = function() {
 
 	if (arrowisvisible) {
-		$("#arrow").fadeOut(200);
+		$("#arrow").fadeOut(1000);
 		arrowisvisible = false;
 	}
 
@@ -77,9 +74,8 @@ window.onscroll = function() {
 	
 	//$("#content").css("top", 115+scrollamount*-.65 + "%");
 	
-	blur("#name", scrollamount*.35);
-	blur("#title", scrollamount*.1);
-	blur("#line", scrollamount*.1);
+	blur(".name .blur", scrollamount*.35);
+	blur(".blur", scrollamount*.1);
 	//blur("#content", 50-scrollamount);
 }
 
@@ -113,7 +109,11 @@ function showArrowIfHaventScrolled() {
 
 
 
-function blur(thingtoblur, radius) {
+function blur(thingtoblur, radius, opac) {
+
+	if (opac == undefined) {
+		opac = 1;
+	}
 
 	if (radius > 50) { // don't blur anything more than 50 pixels
 		radius = 50;
@@ -125,6 +125,6 @@ function blur(thingtoblur, radius) {
 	
 	$(thingtoblur).foggy({
 		blurRadius: radius,
-		opacity: 1
+		opacity: opac
 	});
 }
