@@ -164,3 +164,7 @@ a.contact:hover {
 	font-size: 1em;
 	color: rgba(255,255,255,.3);
 }
+
+.attribution {
+	margin: .5em 0 1.5em 0;
+}
