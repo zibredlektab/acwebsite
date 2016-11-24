@@ -82,21 +82,13 @@ body {
 	font-size: 2em;
 }
 
-#bottom-spacer {
-	height: 25%;
-	width: 100%;
-	background: #f00;
-	border: 2px dotted;
-	
-	position: absolute;
-	bottom: 0%;
-	
+ul {
+	padding: 0;
+	margin-top: -2.7em;
 }
 
-
-
 li {
-	padding-top: .35em;
+	padding-bottom: .35em;
 	list-style-type: none;
 }
 
