@@ -58,12 +58,23 @@ body {
 
 #arrow {
 	opacity: 0;
-	font-size: 3em;
 	position: absolute;
 	margin: 0 auto;
 	left: 0; right:0;
 	padding-top: 30px;
 	text-align: center;
+}
+
+@media screen and (max-device-width: 980px) {
+	#arrow {
+		font-size: 10em;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	#arrow {
+		font-size: 3em;
+	}
 }
 
 p {
@@ -73,7 +84,7 @@ p {
 
 @media screen and (max-device-width: 980px) {
 	p {
-		font-size: 2em;
+		font-size: 2.5em;
 	}
 }
 
@@ -159,7 +170,6 @@ li {
 }
 
 .name {
-	font-size: 7em;
 	width: 100%;
 	padding: 0;
 	margin: 0;
@@ -168,6 +178,18 @@ li {
 	font-family: 'Cardo', serif;
 	text-shadow: 2px 1px 1px black
 
+}
+
+@media screen and (max-device-width: 980px) {
+	.name {
+		font-size: 10em;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	.name {
+		font-size: 7em;
+	}
 }
 
 #title {
@@ -180,20 +202,52 @@ li {
 	filter: blur(0px);
 }
 
+@media screen and (max-device-width: 980px) {
+	#title {
+		font-size: 4em;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	#title {
+		font-size: 3em;
+	}
+}
+
 #line {
 	height: 1px;
 	background-color: white;
 	display: inline;
 	width: 100%;
 	position: absolute;
-	left: 0; top: 89%;
+	left: 0;
+}
+
+@media screen and (max-device-width: 980px) {
+	#line {
+		top: 94%;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	#line {
+		top: 89%;
+	}
 }
 
 
 /* About page */
 
-.about-container {
-	width: 70%;
+@media screen and (max-device-width: 980px) {
+	.about-container {
+		width: 90%;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	.about-container {
+		width: 70%;
+	}
 }
 
 .about-name {
@@ -205,14 +259,44 @@ li {
 }
 
 h2.about-subtitle {
-	font-weight: 300;
 	margin-top: .7em;
 }
 
-/* Contact page */
+@media screen and (max-device-width: 980px) {
+	h2.about-subtitle {
+		font-weight: 700;
+		font-size: 3.5em;
+	}
+}
 
-h2.contact {
-	font-weight: 100;
+@media screen and (min-device-width: 980px) {
+	h2.about-subtitle {
+		font-weight: 300;
+	}
+}
+
+/* Contact page */
+@media screen and (max-device-width: 980px) {
+	h2.contact {
+		font-weight: 300;
+		font-size: 5em;
+		padding: 1em 0 0 0;
+	}
+	
+	a.contact {
+		padding-top: .1em;
+		display: block;
+	}
+	
+	a.contact:hover {
+		font-weight: 700;
+	}
+}
+
+@media screen and (min-device-width: 980px) {
+	h2.contact {
+		font-weight: 100;
+	}
 }
 
 a.contact:hover {
