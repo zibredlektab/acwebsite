@@ -35,6 +35,7 @@ $(document).ready(function(){
 			},complete: function() {
 				var suffix = "html";
 				if (link.attr("id") == "resume") {
+					// the resume is a pdf, not html
 					suffix = "pdf";
 				}
 				window.location.href = link.attr("id") + "." + suffix;
@@ -49,7 +50,7 @@ $(document).ready(function(){
 window.onscroll = function() {
 
 	if (arrowisvisible) {
-		$("#arrow").fadeOut(1000);
+		$("#arrow").fadeOut(600);
 		arrowisvisible = false;
 	}
 
