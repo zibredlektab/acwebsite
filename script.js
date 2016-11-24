@@ -26,22 +26,25 @@ $(document).ready(function(){
 	
 	// links should blur out the page before transitioning
 	$("a").click(function() {
-		var link = $(this)
-		$("body").animate({fadeoutcounter:50},{
-			duration: 300,
-			step: function(value) {
-				console.log("blur value is " + value);
-				blur(".fade-on-transition", value, 1-(0.02*value));
-			},complete: function() {
-				var suffix = "html";
-				if (link.attr("id") == "resume") {
-					// the resume is a pdf, not html
-					suffix = "pdf";
+		var link = $(this);
+		if (!link.attr("href")) {
+			console.log("link doesn't have an href");
+			$("body").animate({fadeoutcounter:50},{
+				duration: 300,
+				step: function(value) {
+					console.log("blur value is " + value);
+					blur(".fade-on-transition", value, 1-(0.02*value));
+				},complete: function() {
+					var suffix = "html";
+					if (link.attr("id") == "resume") {
+						// the resume is a pdf, not html
+						suffix = "pdf";
+					}
+					window.location.href = link.attr("id") + "." + suffix;
+					$("body").css("fadeoutcounter", 0);
 				}
-				window.location.href = link.attr("id") + "." + suffix;
-				$("body").css("fadeoutcounter", 0);
-			}
-		});
+			});
+		}
 	});
 });
 
