@@ -5,24 +5,14 @@ var scroller = new scrollPercent;
 history.navigationMode = 'compatible';
 
 
-// Safari needs this, unfortunately. It forces the page to reload when it is navigated to.
+// Safari needs things to happen on "pageshow" instead of document.ready.
 $(window).bind("pageshow", function(event) {
-    if (event.originalEvent.persisted) {
-    	console.log("reloaded page");
-        window.location.reload();
-    } else {
-    	console.log("don't have to reload the page");
-    }
-});
 
-$(window).load(function(){
 	console.log("window loaded");
 	setTimeout(function() {
 		$('html, body').scrollTop(0); 
 	}, 10);
-});
 
-$(document).ready(function(){
 	
 	console.log("document ready");
 
