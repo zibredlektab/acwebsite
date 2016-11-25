@@ -36,6 +36,10 @@
 
 	/* Global things */
 
+	html {
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+
 	body {
 		background: #448f9a;
 		color: white;
@@ -45,7 +49,6 @@
 		font-family: 'Lato';
 		font-weight: 100;
 		
-		-webkit-font-smoothing: subpixel-antialiased;
 	}
 
 	#arrow {
@@ -148,6 +151,7 @@
 		background-color: #448f9a;
 		filter: blur(0px);
 		font-size: 3em;
+		z-index: 0;
 	}
 
 	#line {
@@ -158,6 +162,7 @@
 		position: absolute;
 		left: 0;
 		top: 89%;
+		z-index: -1;
 	}
 
 
