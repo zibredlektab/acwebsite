@@ -117,12 +117,15 @@
 	#testimonials {
 		color: transparent;
 		border-bottom: 1px solid transparent;
+		transform: scaleY(.2);
+		
 		transition: all 400ms cubic-bezier(0,0,.2,1);
 	}
 
 	#testimonials:hover {
 		color: rgba(255,255,255,.3);
 		border-bottom: 3px solid rgba(255,255,255,.3);
+		transform: scaleY(1);
 	}
 
 	/* Main page */
