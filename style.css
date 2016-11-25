@@ -149,7 +149,6 @@
 		font-style: italic;
 		display: inline;
 		background-color: #448f9a;
-		filter: blur(0px);
 		font-size: 3em;
 		z-index: 0;
 	}
@@ -360,7 +359,6 @@
 		font-style: italic;
 		display: inline;
 		background-color: #448f9a;
-		filter: blur(0px);
 		font-size: 4em;
 	}
 
