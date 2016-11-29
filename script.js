@@ -88,20 +88,13 @@ window.onscroll = function() {
 	if ($("body").hasClass("scrollable")) {
 	
 		scrollamount -= 80;
-
-		
-		// at -12%, the menu should fade in
-	/*	if (scrollamount > -12) {
-			blur("#about-menu", scrollamount, scrollamount/100);
-		}
-*/
-
 		
 		blur("#about-menu", 19-scrollamount, .05*scrollamount);
 		
 		
-	console.log("scrolling, position is " + scrollamount + "%");
 		
+		
+		// accelerate the blur effect once it begins, so it still reaches the same blur level
 		if (scrollamount > 0) {
 			scrollamount *= 5;
 		}
@@ -121,7 +114,6 @@ window.onscroll = function() {
 	
 	blur(".name .blur", scrollamount*.35, (120-scrollamount)/100);
 	blur(".blur", scrollamount*.1, (120-scrollamount)/100);
-	//blur("#content", 50-scrollamount);
 }
 
 
