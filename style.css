@@ -245,6 +245,11 @@
 	body.no-scroll {
 		overflow: hidden;
 	}
+	
+	.horiz-centered {
+		margin: auto;
+		left:0; right:0;
+	}
 
 	.text-centered {
 		text-align: center;
