@@ -385,6 +385,7 @@
 		display: inline;
 		background-color: #448f9a;
 		font-size: 4em;
+		z-index: 0;
 	}
 
 	#line {
@@ -395,13 +396,17 @@
 		position: absolute;
 		left: 0;
 		top: 94%;
+		z-index: -1;
 	}
 	
 
 	/* About page */
 
+
 	.about-container {
 		width: 90%;
+		margin-top: 7em;
+		padding-bottom: 6em;
 	}
 
 	.about-name {
@@ -416,6 +421,15 @@
 		margin-top: .7em;
 		font-weight: 700;
 		font-size: 3.5em;
+	}
+
+
+	#about-menu {
+		margin: 5em auto 0 auto;
+		left: 0; right: 0;
+		height: 50%;
+		position: absolute;
+		font-size: 2em;
 	}
 
 

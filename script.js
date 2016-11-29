@@ -90,9 +90,7 @@ window.onscroll = function() {
 		scrollamount -= 80;
 		
 		blur("#about-menu", 19-scrollamount, .05*scrollamount);
-		
-		
-		
+
 		
 		// accelerate the blur effect once it begins, so it still reaches the same blur level
 		if (scrollamount > 0) {
