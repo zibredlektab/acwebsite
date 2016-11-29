@@ -58,6 +58,13 @@ $(window).bind("pageshow", function(event) {
 
 window.onscroll = function() {
 
+	//var scrollTop     = $(window).scrollTop(),
+		//elementOffset = $('.about-container').offset().top,
+		//distance      = (elementOffset - scrollTop);
+
+	//console.log(elementOffset);
+
+
 	if (arrowisvisible) {
 		$("#arrow").fadeOut(600);
 		arrowisvisible = false;
@@ -76,8 +83,32 @@ window.onscroll = function() {
 	}
 	
 	
+	// if we're on a "scrollable" page (like about.html), scroll effects shouldn't begin
+	// until we're most of the way down the page
+	if ($("body").hasClass("scrollable")) {
 	
+		scrollamount -= 80;
+
+		
+		// at -12%, the menu should fade in
+	/*	if (scrollamount > -12) {
+			blur("#about-menu", scrollamount, scrollamount/100);
+		}
+*/
+
+		
+		blur("#about-menu", 19-scrollamount, .05*scrollamount);
+		
+		
 	console.log("scrolling, position is " + scrollamount + "%");
+		
+		if (scrollamount > 0) {
+			scrollamount *= 5;
+		}
+
+
+	}
+	
 	
 	//$("#name").css("transform", "translate(0px," + scrollamount*1.7 + "px)");
 	//$("#title").css("transform", "translate(0px," + scrollamount*-.2 + "px)");
@@ -95,27 +126,32 @@ window.onscroll = function() {
 
 
 function showArrowIfHaventScrolled() {
-	if (!havescrolled) { // if we haven't already started scrolling
-		console.log("check 1: have not scrolled yet");
-		setTimeout(function() {
-			console.log("waited two seconds");
-			// wait two seconds before showing the arrow
-			if (!havescrolled) { // double-check that we haven't scrolled in those two seconds
-				console.log("check 2: still haven't scrolled, fading in arrow");
-				$("#arrow").animate({"opacity":1},{ // show the arrow
-					duration: 1000,
-					complete: function() {
-						console.log("arrow is fully faded-in");
-						arrowisvisible = true;
-					}
-				});
-			} else {
-				console.log("check 2 failed, scrolled during the two second wait");
-			}
-		}, 2000);
+	if ($("#arrow").attr("class") != "no-animate") {
+		if (!havescrolled) { // if we haven't already started scrolling
+			console.log("check 1: have not scrolled yet");
+			setTimeout(function() {
+				console.log("waited two seconds");
+				// wait two seconds before showing the arrow
+				if (!havescrolled) { // double-check that we haven't scrolled in those two seconds
+					console.log("check 2: still haven't scrolled, fading in arrow");
+					$("#arrow").animate({"opacity":1},{ // show the arrow
+						duration: 1000,
+						complete: function() {
+							console.log("arrow is fully faded-in");
+							arrowisvisible = true;
+						}
+					});
+				} else {
+					console.log("check 2 failed, scrolled during the two second wait");
+				}
+			}, 2000);
 		
+		} else {
+			console.log("check 1 failed, have already scrolled");
+		}
 	} else {
-		console.log("check 1 failed, have already scrolled");
+		$("#arrow").css("opacity", 1);
+		arrowisvisible = true;
 	}
 
 }

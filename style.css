@@ -16,6 +16,11 @@
 		transform: translate(-50%, -50%);
 		position: absolute;
 	}
+	
+	.horiz-centered {
+		margin: auto;
+		left:0; right:0;
+	}
 
 	.fixed {
 		position: fixed;
@@ -173,6 +178,8 @@
 	
 	.about-container {
 		width: 70%;
+		margin-top: 7em;
+		padding-bottom: 6em;
 	}
 
 	.about-name {
@@ -188,7 +195,21 @@
 		font-weight: 300;
 	}
 
+	#about-menu {
+		margin: 5em auto 0 auto;
+		left: 0; right: 0;
+		height: 50%;
+		position: absolute;
+		font-size: 2em;
+	}
+
 	/* Contact page */
+
+	.contact-container {
+		width: 70%;
+		margin-top: 3em;
+		padding-bottom: 6em;
+	}
 
 
 	h2.contact {
